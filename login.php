@@ -16,8 +16,6 @@ $errorMsg = '';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $usernameOrEmail = trim($_POST['username']);
     $password        = $_POST['password'];
-
-    // Lookup by username or email
     $sql  = "SELECT * FROM users WHERE username = ? OR email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $usernameOrEmail, $usernameOrEmail);
@@ -27,14 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['password'])) {
 
-            // ✅ Check if role exists in roles table
             $roleCheck = $conn->prepare("SELECT role_name FROM roles WHERE role_name = ?");
             $roleCheck->bind_param("s", $row['role']);
             $roleCheck->execute();
             $roleResult = $roleCheck->get_result();
 
             if ($roleResult && $roleResult->num_rows === 1) {
-                // ✅ Valid role and password
                 $_SESSION['user_id']  = $row['id'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['role']     = $row['role'];
