@@ -19,7 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html>
-<head><title>Verify Code</title></head>
+
+<head>
+    <title>Verify Code</title>
+</head>
+
 <body>
     <h2>Enter Verification Code</h2>
     <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
@@ -28,4 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Verify</button>
     </form>
 </body>
+
 </html>

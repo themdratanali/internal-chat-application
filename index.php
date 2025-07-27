@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Build and analyze your resume using AI with Deppol's intelligent resume tool." />
   <meta name="author" content="Deppol" />
-  <link rel="stylesheet" href="assets/css/home.css"/>
+  <link rel="stylesheet" href="assets/css/home.css" />
   <title>Deppol Messenger</title>
 </head>
 
@@ -23,18 +24,18 @@
         <li><a href="admin/admin_signup.php">Admin Signup</a></li>
       </ul>
     </nav>
-    
+
     <div class="line"></div>
 
     <header class="section__container header__container">
       <div class="header__content">
         <h1>
-          Messagees<br />
+          Internal Chat<br />
           Anytime<br />
           Anywhere
         </h1>
         <p class="section__description">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.  
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         </p>
         <div class="header__btns" style="margin-top: 40px;">
           <a href="login.php" class="btn">Get Started</a>
@@ -50,4 +51,5 @@
     </footer>
   </div>
 </body>
+
 </html>

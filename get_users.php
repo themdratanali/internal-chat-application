@@ -27,4 +27,3 @@ while ($user = $result->fetch_assoc()) {
         </div>
     ';
 }
-?>

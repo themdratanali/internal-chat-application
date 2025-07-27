@@ -37,33 +37,36 @@ $user = $result->fetch_assoc();
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Edit Profile</title>
     <link rel="stylesheet" href="assets/css/edit_profile.css">
 </head>
+
 <body>
 
-<form method="POST" enctype="multipart/form-data">
-    <h2>Edit Profile</h2>
-    
-    <?php if (!empty($user['photo'])): ?>
-        <img src="<?= htmlspecialchars($user['photo']) ?>" alt="Current Photo">
-    <?php endif; ?>
+    <form method="POST" enctype="multipart/form-data">
+        <h2>Edit Profile</h2>
 
-    <label>Name:</label>
-    <input type="text" name="name" value="<?= htmlspecialchars($user['name'] ?? '') ?>" required>
+        <?php if (!empty($user['photo'])): ?>
+            <img src="<?= htmlspecialchars($user['photo']) ?>" alt="Current Photo">
+        <?php endif; ?>
 
-    <label>Username:</label>
-    <input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>" required>
+        <label>Name:</label>
+        <input type="text" name="name" value="<?= htmlspecialchars($user['name'] ?? '') ?>" required>
 
-    <label>Email:</label>
-    <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
+        <label>Username:</label>
+        <input type="text" name="username" value="<?= htmlspecialchars($user['username']) ?>" required>
 
-    <label>Upload New Photo:</label>
-    <input type="file" name="photo">
+        <label>Email:</label>
+        <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required>
 
-    <button type="submit">Update Profile</button>
-</form>
+        <label>Upload New Photo:</label>
+        <input type="file" name="photo">
+
+        <button type="submit">Update Profile</button>
+    </form>
 
 </body>
+
 </html>

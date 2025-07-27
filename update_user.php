@@ -49,42 +49,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Update User</title>
     <link rel="stylesheet" href="assets/css/admin_dashboard.css">
 </head>
+
 <body>
-<div class="dashboard-wrapper">
-    <h2>Update User (ID: <?php echo $user['id']; ?>)</h2>
-    <form method="POST" enctype="multipart/form-data">
-        <label>Name:</label><br>
-        <input type="text" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required><br>
+    <div class="dashboard-wrapper">
+        <h2>Update User (ID: <?php echo $user['id']; ?>)</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <label>Name:</label><br>
+            <input type="text" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required><br>
 
-        <label>Username:</label><br>
-        <input type="text" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required><br>
+            <label>Username:</label><br>
+            <input type="text" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required><br>
 
-        <label>Email:</label><br>
-        <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required><br>
+            <label>Email:</label><br>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required><br>
 
-        <label>New Password:</label><br>
-        <input type="password" name="password" placeholder="Enter new password" required><br>
+            <label>New Password:</label><br>
+            <input type="password" name="password" placeholder="Enter new password" required><br>
 
-        <label>Role:</label><br>
-        <select name="role" required>
-            <option value="user" <?php if ($user['role'] === 'user') echo 'selected'; ?>>User</option>
-            <option value="ceo" <?php if ($user['role'] === 'ceo') echo 'selected'; ?>>CEO</option>
-            <option value="admin" <?php if ($user['role'] === 'admin') echo 'selected'; ?>>Admin</option>
-        </select><br><br>
+            <label>Role:</label><br>
+            <select name="role" required>
+                <option value="user" <?php if ($user['role'] === 'user') echo 'selected'; ?>>User</option>
+                <option value="ceo" <?php if ($user['role'] === 'ceo') echo 'selected'; ?>>CEO</option>
+                <option value="admin" <?php if ($user['role'] === 'admin') echo 'selected'; ?>>Admin</option>
+            </select><br><br>
 
-        <label>Photo:</label><br>
-        <input type="file" name="photo"><br>
-        <?php if ($user['photo']): ?>
-            <img src="<?php echo $user['photo']; ?>" alt="User Photo" width="100" style="margin-top:10px;"><br>
-        <?php endif; ?>
+            <label>Photo:</label><br>
+            <input type="file" name="photo"><br>
+            <?php if ($user['photo']): ?>
+                <img src="<?php echo $user['photo']; ?>" alt="User Photo" width="100" style="margin-top:10px;"><br>
+            <?php endif; ?>
 
-        <br><button type="submit">Update User</button>
-    </form>
-    <br><a href="admin_dashboard.php">← Back to Dashboard</a>
-</div>
+            <br><button type="submit">Update User</button>
+        </form>
+        <br><a href="admin_dashboard.php">← Back to Dashboard</a>
+    </div>
 </body>
+
 </html>

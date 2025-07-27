@@ -22,12 +22,11 @@ $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
     $class = ($row['sender_id'] == $sender_id) ? 'sent' : 'received';
     $message = htmlspecialchars($row['message']);
-    
+
     $time = date('h:i A', strtotime($row['created_at']));
-    
+
     echo '<div class="message ' . $class . '">';
     echo    '<div class="message-text">' . $message . '</div>';
     echo    '<div class="message-time">' . $time . '</div>';
     echo '</div>';
 }
-?>

@@ -6,34 +6,48 @@ if (isset($_SESSION['user_id'])) {
     if ($_SESSION['role'] === 'admin') {
         header("Location: admin/dashboard.php");
     } else {
-        header("Location:chat.php");
+        header("Location: chat.php");
     }
     exit;
 }
+
 $errorMsg = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $usernameOrEmail = trim($_POST['username']);
+    $password        = $_POST['password'];
 
-    $sql  = "SELECT * FROM users WHERE username=? OR email=?";
+    // Lookup by username or email
+    $sql  = "SELECT * FROM users WHERE username = ? OR email = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $username, $username);
+    $stmt->bind_param("ss", $usernameOrEmail, $usernameOrEmail);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
         if (password_verify($password, $row['password'])) {
-            $_SESSION['user_id']  = $row['id'];
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['role']     = $row['role'];
 
-            if ($row['role'] === 'admin') {
-                header("Location: admin/dashboard.php");
+            // ✅ Check if role exists in roles table
+            $roleCheck = $conn->prepare("SELECT role_name FROM roles WHERE role_name = ?");
+            $roleCheck->bind_param("s", $row['role']);
+            $roleCheck->execute();
+            $roleResult = $roleCheck->get_result();
+
+            if ($roleResult && $roleResult->num_rows === 1) {
+                // ✅ Valid role and password
+                $_SESSION['user_id']  = $row['id'];
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['role']     = $row['role'];
+
+                if ($row['role'] === 'admin') {
+                    header("Location: admin/dashboard.php");
+                } else {
+                    header("Location: chat.php");
+                }
+                exit;
             } else {
-                header("Location: chat.php");
+                $errorMsg = "Invalid role. Contact the administrator.";
             }
-            exit;
         } else {
             $errorMsg = "Incorrect password!";
         }
@@ -45,12 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/login.css" />
     <title>Login - Deppol Messenger</title>
 </head>
+
 <body>
     <div class="login-wrapper">
         <div class="login-box">
@@ -72,4 +88,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
     </div>
 </body>
+
 </html>

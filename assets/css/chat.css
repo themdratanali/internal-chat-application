@@ -1,4 +1,3 @@
-/* Reset & Fonts */
 * {
     margin: 0;
     padding: 0;
@@ -6,14 +5,12 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* Body Layout */
 body {
     display: flex;
     height: 100vh;
     background-color: #f5f7fa;
 }
 
-/* Sidebar */
 .sidebar {
     width: 25%;
     background-color: #ffffff;
@@ -41,7 +38,6 @@ body {
     transform: scale(1.02);
 }
 
-/* Chat Container */
 .chat-container {
     width: 75%;
     display: flex;
@@ -55,7 +51,6 @@ body {
     color: #1e90ff;
 }
 
-/* Top Bar */
 .top-bar {
     width: 102%;
     height: 8%;
@@ -66,7 +61,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin: -20px 0 20px -20px;
 }
 
@@ -75,7 +70,7 @@ body {
     text-decoration: none;
 }
 
-.profile{
+.profile {
     margin-left: 800px;
 }
 
@@ -126,18 +121,17 @@ body {
     margin-top: 4px;
 }
 
-.chat-header{
+.chat-header {
     border-bottom: solid 1px rgb(225 225 225);
 }
 
-/* Chat Form */
 form {
     display: flex;
     padding-top: 10px;
 }
 
 #message {
-flex: 1;
+    flex: 1;
     padding: 13px;
     border-radius: 8px;
     border: 1px solid #ccc;
@@ -160,27 +154,47 @@ flex: 1;
     transition: background 0.3s ease;
 }
 
-/* Animations */
 @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideLeft {
-    from {opacity: 0; transform: translateX(-30px);}
-    to {opacity: 1; transform: translateX(0);}
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideRight {
-    from {opacity: 0; transform: translateX(30px);}
-    to {opacity: 1; transform: translateX(0);}
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-/* Responsive */
 @media(max-width: 768px) {
     .sidebar {
         display: none;
     }
+
     .chat-container {
         width: 100%;
     }
@@ -191,7 +205,7 @@ flex: 1;
     justify-content: space-between;
     align-items: center;
     padding: 15px 15px 15px 15px;
-    background-color:#f3f3f3;
+    background-color: #f3f3f3;
 }
 
 .chat-header-left {
