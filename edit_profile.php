@@ -27,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<script>alert('Profile updated successfully'); window.location.href='chat.php';</script>";
 }
 
-// Get current user info
 $stmt = $conn->prepare("SELECT * FROM users WHERE id = ?");
 $stmt->bind_param("i", $userId);
 $stmt->execute();
