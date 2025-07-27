@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "internal_chat";
+$db = "internal";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
